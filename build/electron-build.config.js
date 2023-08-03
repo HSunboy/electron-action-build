@@ -58,7 +58,10 @@ const config = {
   files: [
     {
       from: '.',
-      filter: ['package.json'],
+      filter: ['package.json', 'main.js'],
+    },
+    {
+      from: `${distDir}`
     }
   ]
 };

@@ -3,7 +3,7 @@
   "author": "晓康 <xxk268858@antgroup.com>",
   "scripts": {
     "dev": "max dev",
-    "build": "max build && node ./build/build.js all",
+    "build": "max build",
     "format": "prettier --cache --write .",
     "prepare": "husky install",
     "postinstall": "max setup",

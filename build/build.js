@@ -34,14 +34,14 @@ async function buildClient(target) {
       {
         ENV: 'jre',
         ARCH: '',
-        targets: electronBuilder.Platform.LINUX.createTarget(['deb', 'rpm', 'AppImage'], electronBuilder.Arch.x64),
+        targets: electronBuilder.Platform.LINUX.createTarget(['deb', 'AppImage'], electronBuilder.Arch.x64),
       },
     ],
     'linux_aarch64': [
       {
         ENV: 'jre',
         ARCH: '',
-        targets: electronBuilder.Platform.LINUX.createTarget(['deb', 'rpm', 'AppImage'], electronBuilder.Arch.arm64),
+        targets: electronBuilder.Platform.LINUX.createTarget(['deb', 'AppImage'], electronBuilder.Arch.arm64),
       },
     ],
     win: [
@@ -87,13 +87,18 @@ async function buildClient(target) {
 async function run() {
   console.log('sign: ', process.env.CSC_LINK)
   switch (process.argv[2]) {
-    case 'all': {
+    case 'linux': {
+
+      await buildWeb()
+      await buildClient('linux_x86');
+      await buildClient('linux_aarch64');
+      return;
+    }
+    case 'mac-win': {
 
       await buildWeb();
       await buildClient('mac-jre');
       await buildClient('win-jre');
-      await buildClient('linux_x86');
-      await buildClient('linux_aarch64');
       return;
     }
   }

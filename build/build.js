@@ -88,7 +88,7 @@ async function run() {
   switch (process.argv[2]) {
     case 'all': {
 
-      await buildWeb();
+      // await buildWeb();
       await buildClient('mac-jre');
       await buildClient('win-jre');
       await buildClient('linux_x86');

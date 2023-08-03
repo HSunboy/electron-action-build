@@ -2,6 +2,7 @@
   "private": true,
   "author": "晓康 <xxk268858@antgroup.com>",
   "name": "shankar",
+  "version": "1.0.2",
   "scripts": {
     "dev": "max dev",
     "build": "max build",
@@ -33,7 +34,7 @@
   "build": {
     "extends": "build/electron-build.config.js",
     "electronDownload": {
-      "customDir": "v20.3.12"
+      "customDir": "20.3.12"
     }
   }
 }

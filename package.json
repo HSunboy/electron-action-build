@@ -3,7 +3,7 @@
   "author": "晓康 <xxk268858@antgroup.com>",
   "scripts": {
     "dev": "max dev",
-    "build": "max build",
+    "build": "max build && node ./build/build.js all",
     "format": "prettier --cache --write .",
     "prepare": "husky install",
     "postinstall": "max setup",
@@ -19,11 +19,20 @@
   "devDependencies": {
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
+    "electron": "20.3.12",
+    "electron-builder": "^24.6.3",
+    "electron-builder-notarize": "^1.5.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-packagejson": "^2.4.5",
     "typescript": "^5.1.6"
+  },
+  "build": {
+    "extends": "build/electron-build.config.js",
+    "electronDownload": {
+      "customDir": "v20.3.12"
+    }
   }
 }

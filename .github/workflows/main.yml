@@ -1,0 +1,70 @@
+name: Build and Release
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build frontend
+        run: node ./build/build.js all
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload frontend artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: frontend-artifact
+          path: release/
+
+      - name: Get release ID
+        id: get_release_id
+        run: echo "::set-output name=release_id::${{ steps.create_release.outputs.id }}"
+
+      - name: Attach frontend artifact to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: release/
+          asset_name: frontend.zip
+          asset_content_type: application/zip
+
+      - name: Update release description
+        uses: actions/github-script@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const releaseId = '${{ steps.get_release_id.outputs.release_id }}';
+            const response = await github.repos.updateRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: releaseId,
+              body: 'This is the description of the release.'
+            });
+            console.log(response);

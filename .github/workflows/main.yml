@@ -6,15 +6,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: macos-latest
-            cmd: mac-win
-          - os: ubuntu-latest
-            cmd: linux
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
@@ -29,7 +21,7 @@ jobs:
         run: yarn
 
       - name: Build frontend
-        run: node ./build/build.js ${{ matrix.cmd }}
+        run: node ./build/build.js all
 
       - name: Create Release
         uses: ncipollo/release-action@v1

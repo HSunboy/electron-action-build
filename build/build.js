@@ -101,6 +101,15 @@ async function run() {
       await buildClient('win-jre');
       return;
     }
+    case 'all': {
+
+      await buildWeb();
+      await buildClient('mac-jre');
+      await buildClient('win-jre');
+      await buildClient('linux_x86');
+      await buildClient('linux_aarch64');
+      return;
+    }
   }
   console.log('[Done]Electron Builder')
 }

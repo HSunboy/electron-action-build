@@ -1,6 +1,7 @@
 {
   "private": true,
   "author": "晓康 <xxk268858@antgroup.com>",
+  "name": "shankar",
   "scripts": {
     "dev": "max dev",
     "build": "max build",

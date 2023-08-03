@@ -101,6 +101,12 @@ async function run() {
       await buildClient('win-jre');
       return;
     }
+    case 'mac': {
+
+      await buildWeb();
+      await buildClient('mac-jre');
+      return;
+    }
     case 'all': {
 
       await buildWeb();

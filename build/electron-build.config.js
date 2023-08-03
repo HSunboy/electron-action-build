@@ -2,7 +2,7 @@ const distDir = 'dist';
 
 
 const config = {
-  productName: 'OceanBase Developer Center',
+  productName: 'shankar',
   compression: 'normal',
   afterSign: "electron-builder-notarize",
   mac: {

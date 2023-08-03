@@ -21,7 +21,7 @@ jobs:
         run: yarn
 
       - name: Build frontend
-        run: npm run build
+        run: node ./build/build.js all
 
       - name: Create release
         id: create_release

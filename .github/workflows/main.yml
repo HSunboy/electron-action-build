@@ -31,6 +31,8 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_TEAM_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.PROD_MACOS_NOTARIZATION_PWD }}
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.PROD_MACOS_NOTARIZATION_PWD }}
+          WIN_CSC_LINK: ${{ secrets.PROD_WIN_CSC_LINK }}
+          WIN_CSC_KEY_PASSWORD: ${{ secrets.PROD_WIN_CSC_KEY_PASSWORD }}
         run: |
           # Turn our base64-encoded certificate back to a regular .p12 file
           
@@ -47,7 +49,7 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$MACOS_CI_KEYCHAIN_PWD" build.keychain
           echo "Cert Imported"
 
-          node ./build/build.js mac
+          node ./build/build.js all
 
       - name: Create Release
         uses: ncipollo/release-action@v1

@@ -13,15 +13,11 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.2.4",
-    "@ant-design/pro-components": "^2.6.10",
-    "@umijs/max": "^4.0.74",
-    "antd": "^5.8.1"
+    "electron": "20.3.12"
   },
   "devDependencies": {
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
-    "electron": "20.3.12",
     "electron-builder": "^24.6.3",
     "electron-builder-notarize": "^1.5.1",
     "husky": "^8.0.3",
@@ -29,7 +25,11 @@
     "prettier": "^3.0.0",
     "prettier-plugin-organize-imports": "^3.2.3",
     "prettier-plugin-packagejson": "^2.4.5",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "@ant-design/icons": "^5.2.4",
+    "@ant-design/pro-components": "^2.6.10",
+    "@umijs/max": "^4.0.74",
+    "antd": "^5.8.1"
   },
   "build": {
     "extends": "build/electron-build.config.js",

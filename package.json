@@ -12,13 +12,11 @@
     "setup": "max setup",
     "start": "npm run dev"
   },
-  "dependencies": {
-    "electron": "20.3.12"
-  },
   "devDependencies": {
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "electron-builder": "^24.6.3",
+    "electron": "20.3.12",
     "electron-builder-notarize": "^1.5.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",

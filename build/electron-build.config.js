@@ -4,9 +4,12 @@ const distDir = 'dist';
 const config = {
   productName: 'shankar',
   compression: 'normal',
+  afterSign: "electron-builder-notarize",
   mac: {
     hardenedRuntime: true,
     category: 'public.app-category.developer-tools',
+    entitlements: "./node_modules/electron-builder-notarize/entitlements.mac.inherit.plist",
+    entitlementsInherit: "./node_modules/electron-builder-notarize/entitlements.mac.inherit.plist",
     gatekeeperAssess: false,
     target: 'dmg',
   },

@@ -18,8 +18,10 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: yarn
-
+        uses: pnpm/action-setup@v2
+        with: 
+          version: 8
+          run_install: true
       - name: Codesign app bundle
         # Extract the secrets we defined earlier as environment variables
         env: 

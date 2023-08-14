@@ -6,5 +6,5 @@ header:
     - 'src/**/*.ts'
     - 'src/**/*.js'
     - 'src/**/*.tsx'
-    - 'src/**/*.less'
+    - 'src/**/*.css'
   comment: on-failure

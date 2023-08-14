@@ -11,6 +11,8 @@ jobs:
   do:
    runs-on: ubuntu-latest
    steps:
+     - name: Checkout code
+       uses: actions/checkout@v2
      - name: Fix License Header
        uses: apache/skywalking-eyes/header@main
        with:
